@@ -22,7 +22,8 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //prompt keyboard to open once app is launched
+        searchBar.becomeFirstResponder()
     //register nibs
         var cellNib = UINib(nibName: TableViewCellIdentifiers.searchResultsCell, bundle: nil)
         searchResultsTableView.registerNib(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.searchResultsCell)
