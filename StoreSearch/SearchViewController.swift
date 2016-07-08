@@ -56,19 +56,7 @@ class SearchViewController: UIViewController {
         let url = NSURL(string: urlString)
         return url!
     }
-    func performStoreRequestWithURL(url: NSURL) -> String? {
-        do {
-            //return a JSON string from the server
-            return try String(contentsOfURL: url, encoding: NSUTF8StringEncoding)
-        } catch {
-            print("Download Error: \(error)")
-            return nil
-        }
-    }
-    func parseJSON(jsonString: String) -> [String: AnyObject]? {
-        //tell the data you are working with UTF-8 encoding
-        guard let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding) else {return nil}
-        //try to turn the json data into dictonary
+    func parseJSON(data: NSData) -> [String: AnyObject]? {
         do {
             return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject]
         } catch {
@@ -217,53 +205,48 @@ class SearchViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 }
-
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         if !searchBar.text!.isEmpty {
-        
-        //hide the keyboard once the Search button is clicked
             searchBar.resignFirstResponder()
+            
             isLoading = true
-            hasSearched = true
-
             searchResultsTableView.reloadData()
             
-        //provide search results
+            hasSearched = true
             searchResults = [SearchResult]()
             
-            //allow for asychronous requests by building a closure and placing it into the main dispatch queue
-            let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-            
-            dispatch_async(queue) {
-                let url = self.urlWithSearchText(searchBar.text!)
-               
-                if let jsonString = self.performStoreRequestWithURL(url),
-                    let dictionary = self.parseJSON(jsonString) {
-                        
+            let url = urlWithSearchText(searchBar.text!)
+            let session = NSURLSession.sharedSession()
+            let dataTask = session.dataTaskWithURL(url, completionHandler: {
+                data, response, error in
+                
+                if let error = error {
+                    print("Failure! \(error)")
+                } else if let httpResponse = response as? NSHTTPURLResponse where httpResponse.statusCode == 200 {
+                    if let data = data, dictionary = self.parseJSON(data) {
                         self.searchResults = self.parseDictionary(dictionary)
-                        
-                        /*sort the results alphabetically.  The first method uses a closure inside the localizedStandardCompare method, while the second uses a trailing closure.  The third uses operator overloading and is defined above.
-                1
-                        searchResults.sortInPlace({ result1, result2 in
-                            return result1.name.localizedStandardCompare(result2.name) == .OrderedAscending})
-                2
-                        searchResults.sortInPlace { $0.name.localizedStandardCompare($1.name) == .OrderedAscending }
-                3
-                        searchResults.sortInPlace{$0 < $1} */
                         self.searchResults.sortInPlace(<)
-                    
-                        dispatch_async(dispatch_get_main_queue()){
+                        
+                        dispatch_async(dispatch_get_main_queue()) {
                             self.isLoading = false
                             self.searchResultsTableView.reloadData()
                         }
-                    
                         return
+                    }
+                } else {
+                    print("Failure! \(response!)")
                 }
+                
                 dispatch_async(dispatch_get_main_queue()) {
+                    self.hasSearched = false
+                    self.isLoading = false
+                    self.searchResultsTableView.reloadData()
                     self.showNetworkError()
                 }
-            }
+            })
+            
+            dataTask.resume()
         }
     }
     
