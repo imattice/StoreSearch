@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LoadingCell" id="TRd-EG-aRj">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TRd-EG-aRj" id="C7y-az-hmF">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3hK-aZ-fnL">
+                        <rect key="frame" x="99" y="9" width="122" height="61"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xq2-Er-wSC">
+                                <rect key="frame" x="0.0" y="0.0" width="122" height="61"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ZV-Ti-6lP">
+                                        <rect key="frame" x="20" y="20" width="68" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="SMl-Ec-D5g">
+                                        <rect key="frame" x="90" y="20" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="2ZV-Ti-6lP" secondAttribute="trailing" constant="34" id="A2k-f1-d0k"/>
+                                    <constraint firstAttribute="bottom" secondItem="SMl-Ec-D5g" secondAttribute="bottom" constant="21" id="LEK-52-Hqs"/>
+                                    <constraint firstItem="2ZV-Ti-6lP" firstAttribute="top" secondItem="xq2-Er-wSC" secondAttribute="top" constant="20" id="LfJ-kL-VX2"/>
+                                    <constraint firstAttribute="bottom" secondItem="2ZV-Ti-6lP" secondAttribute="bottom" constant="20" id="Usz-lV-id9"/>
+                                    <constraint firstItem="2ZV-Ti-6lP" firstAttribute="leading" secondItem="xq2-Er-wSC" secondAttribute="leading" constant="20" id="XTb-t9-Ker"/>
+                                    <constraint firstAttribute="trailing" secondItem="SMl-Ec-D5g" secondAttribute="trailing" constant="12" id="aTy-Ea-005"/>
+                                    <constraint firstItem="SMl-Ec-D5g" firstAttribute="top" secondItem="xq2-Er-wSC" secondAttribute="top" constant="20" id="rsI-ev-VfS"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="3hK-aZ-fnL" firstAttribute="centerY" secondItem="C7y-az-hmF" secondAttribute="centerY" id="8gw-IX-Xvg"/>
+                    <constraint firstItem="3hK-aZ-fnL" firstAttribute="centerX" secondItem="C7y-az-hmF" secondAttribute="centerX" id="GmX-Wc-7Jo"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="457" y="505"/>
+        </tableViewCell>
+    </objects>
+</document>

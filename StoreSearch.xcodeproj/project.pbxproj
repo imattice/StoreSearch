@@ -16,6 +16,7 @@
 		7F2A0D2F1D2D741400F20BFD /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F2A0D2E1D2D741400F20BFD /* SearchResultCell.xib */; };
 		7F2A0D311D2D7CB400F20BFD /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2A0D301D2D7CB400F20BFD /* SearchResultCell.swift */; };
 		7F2A0D331D2D8B2A00F20BFD /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F2A0D321D2D8B2A00F20BFD /* NothingFoundCell.xib */; };
+		7F2A0D351D3020FA00F20BFD /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F2A0D341D3020FA00F20BFD /* LoadingCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		7F2A0D2E1D2D741400F20BFD /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		7F2A0D301D2D7CB400F20BFD /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		7F2A0D321D2D8B2A00F20BFD /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
+		7F2A0D341D3020FA00F20BFD /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			children = (
 				7F2A0D2E1D2D741400F20BFD /* SearchResultCell.xib */,
 				7F2A0D321D2D8B2A00F20BFD /* NothingFoundCell.xib */,
+				7F2A0D341D3020FA00F20BFD /* LoadingCell.xib */,
 			);
 			name = Nibs;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 			files = (
 				7F2A0D211D2C24AC00F20BFD /* LaunchScreen.storyboard in Resources */,
 				7F2A0D1E1D2C24AC00F20BFD /* Assets.xcassets in Resources */,
+				7F2A0D351D3020FA00F20BFD /* LoadingCell.xib in Resources */,
 				7F2A0D2F1D2D741400F20BFD /* SearchResultCell.xib in Resources */,
 				7F2A0D331D2D8B2A00F20BFD /* NothingFoundCell.xib in Resources */,
 				7F2A0D1C1D2C24AC00F20BFD /* Main.storyboard in Resources */,
@@ -341,6 +345,7 @@
 				7F2A0D271D2C24AC00F20BFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
