@@ -189,6 +189,14 @@ class SearchViewController: UIViewController {
         searchResultsTableView.contentInset = UIEdgeInsets(top: 108, left: 0, bottom: 0, right: 0)
         searchResultsTableView.rowHeight = 80
     }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowDetail" {
+            let detailViewController = segue.destinationViewController as! DetailViewViewController
+            let indexPath = sender as! NSIndexPath
+            let searchResult = searchResults[indexPath.row]
+            detailViewController.searchResult = searchResult
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -294,6 +302,7 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(tableView: UITableView,
                    didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        performSegueWithIdentifier("ShowDetail", sender: indexPath)
     }
     func tableView(tableView: UITableView,
                    willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
