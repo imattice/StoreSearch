@@ -19,6 +19,12 @@ class DetailViewViewController: UIViewController {
     
     var searchResult: SearchResult!
     var downloadTask: NSURLSessionDownloadTask?
+    var dismissAnimationStyle = AnimationStyle.Fade
+    
+    enum AnimationStyle {
+        case Slide
+        case Fade
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -83,6 +89,7 @@ class DetailViewViewController: UIViewController {
     }
     
     @IBAction func close() {
+        dismissAnimationStyle = .Slide
         dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func openInStore() {
@@ -100,7 +107,13 @@ extension DetailViewViewController: UIViewControllerTransitioningDelegate {
         return BounceAnimationController()
     }
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return SlideOutAnimationController()
+        
+        switch dismissAnimationStyle {
+        case .Slide:
+            return SlideOutAnimationController()
+        case .Fade:
+            return FadeOutAnimationController()
+        }
     }
 }
 

@@ -79,6 +79,36 @@
             </objects>
             <point key="canvasLocation" x="-35" y="-325"/>
         </scene>
+        <!--LandscapeViewController-->
+        <scene sceneID="GKC-Vd-kCn">
+            <objects>
+                <viewController storyboardIdentifier="LandscapeViewController" id="Bsy-bM-Yri" userLabel="LandscapeViewController" customClass="LandscapeViewController" customModule="StoreSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n2K-QF-FKE"/>
+                        <viewControllerLayoutGuide type="bottom" id="q0Q-l0-Gz0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7Eg-lz-eqj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Landscape Modeeee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iu8-5e-ghc">
+                                <rect key="frame" x="220" y="289" width="160" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iu8-5e-ghc" firstAttribute="centerY" secondItem="7Eg-lz-eqj" secondAttribute="centerY" id="O0k-MY-jM2"/>
+                            <constraint firstItem="iu8-5e-ghc" firstAttribute="centerX" secondItem="7Eg-lz-eqj" secondAttribute="centerX" id="aMI-Vd-HKh"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bTW-ge-dXZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="632" y="-325"/>
+        </scene>
         <!--Detail View View Controller-->
         <scene sceneID="9yt-Yz-ecd">
             <objects>
@@ -208,7 +238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0pN-Qc-XAy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-35" y="356"/>
+            <point key="canvasLocation" x="-35" y="378"/>
         </scene>
     </scenes>
     <resources>

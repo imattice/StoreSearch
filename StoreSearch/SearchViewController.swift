@@ -13,6 +13,8 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchResultsTableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
+    var landscapeViewController: LandscapeViewController?
+    
     var dataTask: NSURLSessionDataTask?
     var searchResults = [SearchResult]()
     var hasSearched = false
@@ -22,6 +24,43 @@ class SearchViewController: UIViewController {
         static let searchResultsCell = "SearchResultCell"
         static let nothingFoundCell = "NothingFoundCell"
         static let loadingCell = "LoadingCell"
+    }
+    
+    func showLandscapeViewWithCoordinator(coordinator: UIViewControllerTransitionCoordinator) {
+        precondition(landscapeViewController == nil)
+        
+        landscapeViewController = storyboard!.instantiateViewControllerWithIdentifier("LandscapeViewController") as? LandscapeViewController
+        
+        if let controller = landscapeViewController {
+            controller.view.frame = view.bounds
+            controller.view.alpha = 0
+            
+            view.addSubview(controller.view)
+            addChildViewController(controller)
+            
+            coordinator.animateAlongsideTransition({ _ in
+                controller.view.alpha = 1
+                self.searchBar.resignFirstResponder()
+                if self.presentedViewController != nil {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+                }, completion: { _ in
+            controller.didMoveToParentViewController(self)
+            })
+        }
+    }
+    func hideLandscapeViewWithCoordinator(coordinator: UIViewControllerTransitionCoordinator) {
+        if let controller = landscapeViewController {
+            controller.willMoveToParentViewController(nil)
+            
+            coordinator.animateAlongsideTransition({ _ in
+                controller.view.alpha = 0
+                }, completion: { _ in 
+                    controller.view.removeFromSuperview()
+                    controller.removeFromParentViewController()
+                    self.landscapeViewController = nil
+            })
+        }
     }
     
     func urlWithSearchText(searchText: String, category: Int) -> NSURL {
@@ -197,8 +236,16 @@ class SearchViewController: UIViewController {
             detailViewController.searchResult = searchResult
         }
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    override func willTransitionToTraitCollection(newCollection: UITraitCollection, 
+                                                  withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
+      
+        switch newCollection.verticalSizeClass {
+        case .Compact:
+            showLandscapeViewWithCoordinator(coordinator)
+        case .Regular, .Unspecified:
+            hideLandscapeViewWithCoordinator(coordinator)
+        }
     }
     
     @IBAction func segmentChanged(sender: UISegmentedControl) {
