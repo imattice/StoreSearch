@@ -91,19 +91,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Landscape Modeeee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iu8-5e-ghc">
-                                <rect key="frame" x="220" y="289" width="160" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t1X-KN-Ch9">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Bsy-bM-Yri" id="7xh-BA-Qs5"/>
+                                </connections>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="csu-5R-tAG">
+                                <rect key="frame" x="280" y="282" width="39" height="37"/>
+                                <connections>
+                                    <action selector="pageChanged:" destination="Bsy-bM-Yri" eventType="valueChanged" id="ysN-ce-DNS"/>
+                                </connections>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="iu8-5e-ghc" firstAttribute="centerY" secondItem="7Eg-lz-eqj" secondAttribute="centerY" id="O0k-MY-jM2"/>
-                            <constraint firstItem="iu8-5e-ghc" firstAttribute="centerX" secondItem="7Eg-lz-eqj" secondAttribute="centerX" id="aMI-Vd-HKh"/>
-                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pageControl" destination="csu-5R-tAG" id="g1G-kC-rQA"/>
+                        <outlet property="scrollView" destination="t1X-KN-Ch9" id="mwn-KK-cGV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bTW-ge-dXZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

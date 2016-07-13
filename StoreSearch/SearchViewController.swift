@@ -20,6 +20,7 @@ class SearchViewController: UIViewController {
     var hasSearched = false
     var isLoading = false
     
+    
     struct TableViewCellIdentifiers {
         static let searchResultsCell = "SearchResultCell"
         static let nothingFoundCell = "NothingFoundCell"
@@ -32,6 +33,7 @@ class SearchViewController: UIViewController {
         landscapeViewController = storyboard!.instantiateViewControllerWithIdentifier("LandscapeViewController") as? LandscapeViewController
         
         if let controller = landscapeViewController {
+            controller.searchResults = searchResults
             controller.view.frame = view.bounds
             controller.view.alpha = 0
             
